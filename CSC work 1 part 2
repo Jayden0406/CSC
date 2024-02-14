@@ -1,0 +1,23 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int main() {
+   string firstName, lastName;
+   double currentSalary, payIncrease;
+  
+   ifstream infile("SalaryData.txt");
+   ofstream outfile("SalaryOut.txt");
+
+   while (infile >> lastName >> firstName >> currentSalary >> payIncrease) {
+       double updatedSalary = currentSalary * (1 + (payIncrease / 100));
+       outfile << firstName << " " << lastName << " " << fixed << setprecision(2) << updatedSalary << endl;
+   }
+
+   infile.close();
+   outfile.close();
+
+   return 0;
+}
